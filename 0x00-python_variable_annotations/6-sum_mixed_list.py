@@ -9,6 +9,6 @@ def sum_mixed_list(mxd_lst: List[Union[int, float]]) -> float:
     list of floats/integers  and return sum
     '''
     total: float = 0.0
-    for n in input_list:
+    for n in mxd_lst:
         total += n
     return total
