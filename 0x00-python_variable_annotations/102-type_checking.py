@@ -1,4 +1,4 @@
-#!/usr/bin/env usr
+#!/usr/bin/env python3
 ''' A module '''
 from typing import List, Tuple
 
