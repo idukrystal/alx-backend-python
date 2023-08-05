@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 ''' Module to house safe_first_element function '''
-from typing import Any, NoneType, Sequence, Union
+from typing import Any, Sequence, Union
 
 
 def safe_first_element(lst: Sequence[Any]) -> Union[Any, type(None)]:
