@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 ''' A module '''
 
-import asyncio
+from asyncio import gather
 import time
 async_comprehension = __import__("1-async_comprehension").async_comprehension
 
@@ -9,7 +9,7 @@ async_comprehension = __import__("1-async_comprehension").async_comprehension
 async def measure_runtime() -> float:
     ''' A function '''
     start: float = time.perf_counter()
-    await asyncio.gather(
+    await gather(
         async_comprehension(),
         async_comprehension(),
         async_comprehension(),
