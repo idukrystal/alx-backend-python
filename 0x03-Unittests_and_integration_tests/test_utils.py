@@ -52,11 +52,14 @@ class TestMemoize(TestCase):
     def test_memoize(self):
         """ Test the memoise decorators posutively """
         class TestClass:
+            """ a test class """
             def a_method(self):
+                """ a method """
                 return 42
 
             @memoize
             def a_property(self):
+                """ a property """
                 return self.a_method()
         with mock.patch.object(
                 TestClass,
