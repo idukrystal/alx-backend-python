@@ -86,12 +86,12 @@ class TestMemoize(TestCase):
         mock_fn.assert_called_once()
 
 
-def mock_request_get(fake_response):
+def mock_request_get(fake_response) -> "MockResponse":
     """ Reusable Mock fuction to replace requests.get """
     class MockResponse:
         """ Mock Response object """
 
-        def __init__(self, response):
+        def __init__(self, response: Dict):
             """ initialize object """
             self.response = response
 
