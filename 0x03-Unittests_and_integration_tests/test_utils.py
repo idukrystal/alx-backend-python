@@ -84,3 +84,18 @@ class TestMemoize(TestCase):
             self.assertEqual(test_class.a_property(), 42)
             self.assertEqual(test_class.a_property(), 42)
         mock_fn.assert_called_once()
+
+
+def mock_request_get(fake_response):
+    """ Reusable Mock fuction to replace requests.get """
+    class MockResponse:
+        """ Mock Response object """
+
+        def __init__(self, response):
+            """ initialize object """
+            self.response = response
+
+        def json(self):
+            """ returns a json representing response """
+            return self.response
+    return MockResponse(fake_response)
