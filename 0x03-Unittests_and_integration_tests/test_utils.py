@@ -5,6 +5,7 @@ import requests
 from parameterized import parameterized
 from unittest import TestCase, mock, main
 from utils import access_nested_map, get_json, memoize
+from typing import Dict, Tuple, Union
 
 
 class TestAccessNestedMap(TestCase):
@@ -15,7 +16,12 @@ class TestAccessNestedMap(TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_access_nested_map(self, nested_map, path, expected):
+    def test_access_nested_map(
+        self,
+        nested_map: Dict,
+        path: Tuple[str],
+        expected: Union[Dict, int],
+    ) -> None:
         """ function to test access_nested_map """
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
@@ -23,7 +29,12 @@ class TestAccessNestedMap(TestCase):
         ({}, ("a",), "a"),
         ({"a": 1}, ("a", "b"), "b")
     ])
-    def test_access_nested_map_exception(self, nested_map, path, msg):
+    def test_access_nested_map_exception(
+        self,
+        nested_map: Dict,
+        path: Tuple[str],
+        exception: Exception,
+    ) -> None:
         """ function to test access_nested_map execeptions"""
         with self.assertRaises(KeyError) as except_cm:
             access_nested_map(nested_map, path)
@@ -37,7 +48,11 @@ class TestGetJson(TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
     ])
-    def test_get_json(self, url, payload):
+    def test_get_json(
+        self,
+        url: str,
+        payload: Dict,
+    ) -> None:
         """ function to test get_json results """
         with mock.patch(
             "requests.get",
@@ -49,7 +64,7 @@ class TestGetJson(TestCase):
 class TestMemoize(TestCase):
     """ to test utills.memoize decorator """
 
-    def test_memoize(self):
+    def test_memoize(self) -> None:
         """ Test the memoise decorators posutively """
         class TestClass:
             """ a test class """
