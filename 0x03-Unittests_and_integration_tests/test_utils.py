@@ -33,12 +33,11 @@ class TestAccessNestedMap(TestCase):
         self,
         nested_map: Dict,
         path: Tuple[str],
-        exception: Exception,
+        msg: str
     ) -> None:
         """ function to test access_nested_map execeptions"""
         with self.assertRaises(KeyError) as except_cm:
             access_nested_map(nested_map, path)
-        # self.assertEqual(except_cm.exception.args, (msg,))
 
 
 class TestGetJson(TestCase):
