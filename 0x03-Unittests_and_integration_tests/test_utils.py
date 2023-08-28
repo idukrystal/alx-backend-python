@@ -82,8 +82,8 @@ class TestMemoize(TestCase):
                 return_value=lambda: 42,
         ) as mock_fn:
             test_class = TestClass()
-            test_class.a_property()
-            test_class.a_property()
+            self.assertEqual(test_class.a_property(), 42)
+            self.assertEqual(test_class.a_property(), 42)
         mock_fn.assert_called_once()
 
 
