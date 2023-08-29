@@ -44,6 +44,7 @@ def access_nested_map(nested_map: Mapping, path: Sequence) -> Any:
 def get_json(url: str) -> Dict:
     """Get JSON from remote URL.
     """
+    print(">>> getting json: "+url)
     response = requests.get(url)
     return response.json()
 

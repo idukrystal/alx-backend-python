@@ -3,7 +3,7 @@
 
 import requests
 from parameterized import parameterized
-from unittest import TestCase, mock, main
+from unittest import TestCase, mock
 from utils import access_nested_map, get_json, memoize
 from typing import Dict, Tuple, Union
 
