@@ -34,3 +34,31 @@ class TestGithubOrgClient(unittest.TestCase):
             client = GithubOrgClient("")
             self.assertEquals(client._public_repos_url, expected)
         mock.assert_called_once_with()
+
+    @parameterized.expand([("mock.com",)], skip_on_empty=True)
+    @patch("client.get_json")
+    def test_public_repos(self, fake_repo_url: str, mock_json: MagicMock):
+        """ tests a fuction """
+        mock_json.return_value = [
+            {
+                "name": "mock",
+                "license": {
+                    "key": "secret_key"
+                }
+            },
+            {
+                "name": "mock2",
+                "license": {
+                    "key": "a_diffrent_key"
+                }
+            }
+        ]
+        with patch(
+                "client.GithubOrgClient._public_repos_url",
+                new_callable=PropertyMock,
+                return_value=fake_repo_url
+        ) as mock:
+            client = GithubOrgClient("")
+            self.assertEqual(client.public_repos(), ["mock", "mock2"])
+        mock.assert_called_once()
+        mock_json.assert_called_once_with(fake_repo_url)
