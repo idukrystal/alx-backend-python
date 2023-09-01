@@ -37,7 +37,9 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @parameterized.expand([("mock.com",)], skip_on_empty=True)
     @patch("client.get_json")
-    def test_public_repos(self, fake_repo_url: str, mock_json: MagicMock) -> None:
+    def test_public_repos(
+            self, fake_repo_url: str, mock_json: MagicMock
+    ) -> None:
         """ tests a fuction """
         mock_json.return_value = [
             {
