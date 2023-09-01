@@ -19,5 +19,5 @@ class TestGithubOrgClient(unittest.TestCase):
         """ Tests the org function of githubclient class """
         mock.return_value = exp
         client = GithubOrgClient(org_name)
-        self.assertEqual(client.org, exp)
+        self.assertEqual(client.org(), exp)
         mock.assert_called_once_with(f"https://api.github.com/orgs/{org_name}")
