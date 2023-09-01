@@ -7,16 +7,11 @@ from client import GithubOrgClient
 from typing import Dict
 
 
-def fake_get_json(url) -> Dict:
-    """ Replaces get_json """
-    return {"url": url}
-
-
 class TestGithubOrgClient(unittest.TestCase):
     """ Test Class for Client Classs """
 
     @parameterized.expand([
-        ("google", {"login": "google"}),
+        ("google", {"logon": "google"}),
         ("abc", {"login": "abc"})
     ])
     @unittest.mock.patch("client.get_json")
@@ -25,3 +20,4 @@ class TestGithubOrgClient(unittest.TestCase):
         mock.return_value = exp
         client = GithubOrgClient(org_name)
         self.assertEqual(client.org, exp)
+        mock.assert_called_once_with(f"https://api.github.com/orgs/{org_name}")
