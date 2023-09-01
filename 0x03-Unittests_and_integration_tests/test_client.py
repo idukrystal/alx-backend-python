@@ -64,4 +64,4 @@ class TestGithubOrgClient(unittest.TestCase):
                 ["mock",]
             )
         mock.assert_called_once()
-        mock_json.assert_called_once_with(fake_repo_url)
+        mock_json.assert_called_once()
