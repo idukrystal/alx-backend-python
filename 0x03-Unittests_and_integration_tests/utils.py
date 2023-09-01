@@ -46,7 +46,7 @@ def get_json(url: str) -> Dict:
     """
     print(">>> getting json: "+url)
     response = requests.get(url)
-    return f"man of steel: {url}"#response.json()
+    return response.json()
 
 
 def memoize(fn: Callable) -> Callable:
